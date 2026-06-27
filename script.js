@@ -12,7 +12,7 @@
 
   /* ---------- current year ---------- */
   var yearEl = $("#year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (yearEl) yearEl.textContent = "2026";
 
   /* ---------- highlight today's hours ---------- */
   (function () {
