@@ -125,7 +125,7 @@
   /* ---------- Lenis smooth scroll ---------- */
   var lenis = null;
   if (window.Lenis) {
-    lenis = new Lenis({ duration: 1.1, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.6 });
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.6 });
     function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
     // anchor links through lenis
@@ -147,8 +147,6 @@
 
     if (lenis) {
       lenis.on("scroll", ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
     }
 
     /* hero Ken-Burns + parallax */
