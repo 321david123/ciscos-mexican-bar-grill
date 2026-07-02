@@ -98,6 +98,8 @@
       <a href="https://ciscosmexicanbargrillil.com/ciscos-mexican-bar--grill/" target="_blank" rel="noopener" class="btn btn--solid">Order Online</a>
     </div>
 
+    <button id="langToggle" class="lang-toggle" type="button" aria-label="Language / Idioma" title="English / Español"><span data-l="en">EN</span><span data-l="es">ES</span></button>
+
     <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="overlay">
       <span></span><span></span><span></span>
     </button>
@@ -172,7 +174,7 @@
       <span class="kicker" data-reveal><span class="kicker__line"></span>Nuestra Historia</span>
       <h2 class="story__title" data-reveal>A neighborhood cantina where every plate comes generous.</h2>
       <p data-reveal>Tucked into downtown Moline at 1231 5th Ave, Cisco's is the kind of sit-down Mexican bar &amp; grill the Quad Cities keeps coming back to. The kitchen turns out grilled tacos, hefty California-style burritos, and chicken-and-rice plates piled with melted cheese — while the bar pours the margaritas regulars can't stop talking about.</p>
-      <p data-reveal>Family-friendly and easygoing, we take reservations, fire up the grill for dine-in, and keep pickup and DoorDash humming for nights you'd rather feast at home. Pull up a chair — <em>mi casa es su casa.</em></p>
+      <p data-reveal data-i18n="0">Family-friendly and easygoing, we take reservations, fire up the grill for dine-in, and keep pickup and DoorDash humming for nights you'd rather feast at home. Pull up a chair — <em>mi casa es su casa.</em></p>
       <div class="story__stats">
         <div class="stat" data-reveal>
           <span class="stat__num" data-count="4250" data-suffix="+">0</span>
@@ -257,7 +259,7 @@
     <div class="dish-row__copy">
       <span class="dish-row__num">04</span>
       <h3 class="dish-row__name" data-reveal>The Margaritas</h3>
-      <p data-reveal><em>"The food is great and the margaritas are amazing."</em> Our full bar is the reason regulars linger — classic on the rocks, frozen, or flavored, poured the way a cantina should.</p>
+      <p data-reveal data-i18n="1"><em>"The food is great and the margaritas are amazing."</em> Our full bar is the reason regulars linger — classic on the rocks, frozen, or flavored, poured the way a cantina should.</p>
       <span class="dish-row__price dish-row__price--soft" data-reveal>Ask your server</span>
     </div>
   </div>
@@ -335,7 +337,7 @@
 
     <div class="menu__foot" data-reveal>
       <a href="https://ciscosmexicanbargrillil.com/ciscos-mexican-bar--grill/" target="_blank" rel="noopener" class="btn btn--solid btn--lg">View Full Menu &amp; Order</a>
-      <a href="https://www.ubereats.com/store/ciscos-mexican-bar-&-grill/S7BIbmL9X7Osqy3h7i9jBg" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--outline-light">Order on Uber Eats</a>
+      <a href="https://www.ubereats.com/store/ciscos-mexican-bar-&amp;-grill/S7BIbmL9X7Osqy3h7i9jBg" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--outline-light">Order on Uber Eats</a>
     </div>
   </div>
 </section>
@@ -476,7 +478,7 @@
   </div>
   <div class="footer__inner">
     <div class="footer__brand">
-      <img src="assets/logo.png" alt="Cisco's Mexican Bar &amp; Grill logo" width="72" height="72" loading="lazy" />
+      <img src="assets/logo.png" alt="Cisco's Mexican Bar &amp; Grill logo" width="72" height="72" loading="lazy" decoding="async" />
       <p class="footer__tag">Mexican bar &amp; grill in downtown Moline. Grilled tacos, bold burritos &amp; amazing margaritas.</p>
       <div class="footer__social">
         <a href="https://www.facebook.com/p/Ciscos-Mexican-Bar-Grill-Moline-61571269720996/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -496,13 +498,13 @@
 
     <div class="footer__col">
       <h4>Hours</h4>
-      <p>Sun: 11am – 6pm<br />Mon–Thu: 11am – 9pm<br />Fri–Sat: 11am – 10pm</p>
+      <p data-i18n="2">Sun: 11am – 6pm<br />Mon–Thu: 11am – 9pm<br />Fri–Sat: 11am – 10pm</p>
     </div>
 
     <div class="footer__col">
       <h4>Order</h4>
       <a href="https://ciscosmexicanbargrillil.com/ciscos-mexican-bar--grill/" target="_blank" rel="noopener">Pickup &amp; Online</a>
-      <a href="https://www.ubereats.com/store/ciscos-mexican-bar-&-grill/S7BIbmL9X7Osqy3h7i9jBg" target="_blank" rel="noopener">Uber Eats</a>
+      <a href="https://www.ubereats.com/store/ciscos-mexican-bar-&amp;-grill/S7BIbmL9X7Osqy3h7i9jBg" target="_blank" rel="noopener">Uber Eats</a>
     </div>
   </div>
 
@@ -533,5 +535,96 @@
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="script.js" defer></script>
 <script>/* visibility failsafe: show content even if GSAP is delayed/blocked/throttled */setTimeout(function(){document.querySelectorAll(".reveal,[data-reveal]").forEach(function(e){e.classList.add("is-visible")});document.querySelectorAll("[data-hero-line],.hero__title .line>span,.hero__line,.hero__title .ltr").forEach(function(e){e.style.opacity="1";e.style.transform="none";e.style.visibility="visible"})},2200);</script>
+
+  <!-- ===== EN/ES language toggle ===== -->
+  <style id="i18n-style">
+    .lang-toggle{display:inline-flex;align-items:center;border:1.4px solid currentColor;border-radius:999px;overflow:hidden;background:transparent;cursor:pointer;padding:0;margin:0 .55rem 0 0;font-family:inherit;vertical-align:middle;opacity:.82;-webkit-tap-highlight-color:transparent;flex:0 0 auto}
+    .lang-toggle:hover{opacity:1}
+    .lang-toggle span{display:block;padding:.36em .56em;font-size:.68rem;font-weight:800;letter-spacing:.04em;color:currentColor;line-height:1;transition:background .15s,color .15s}
+    .lang-toggle span.on{background:#bd2027;color:#fff}
+    @media(max-width:600px){ .lang-toggle{margin-right:.5rem} .lang-toggle span{padding:.34em .48em;font-size:.66rem} }
+    html[lang="es"] .hours tr.is-now td::after{ content:" \00b7  Abierto ahora" !important; }
+  </style>
+  <script id="i18n-script">
+
+  (function(){
+    var TEXT = {"Story": "Nuestra Historia", "Signature": "Especialidades", "Menu": "Menú", "Gallery": "Galería", "Reviews": "Reseñas", "Visit": "Visítanos", "Order Online": "Ordena en línea", "Signature Dishes": "Platillos estrella", "Visit Us": "Visítanos", "Call (309) 524-3123": "Llama al (309) 524-3123", "Downtown Moline · Mexican Bar &amp; Grill": "Centro de Moline · Bar & Grill Mexicano", "Grilled tacos,": "Tacos a la parrilla,", "bold burritos,": "burritos generosos,", "amazing margaritas.": "margaritas increíbles.", "A Mexican bar &amp; grill in the heart of downtown Moline — generous plates, a lively bar, and a table waiting for you.": "Un bar & grill mexicano en el corazón del centro de Moline — platos generosos, una barra animada y una mesa lista para ti.", "See the Menu": "Ver el Menú", "Scroll": "Desliza", "A neighborhood cantina where every plate comes generous.": "Una cantina de barrio donde cada plato llega bien servido.", "Tucked into downtown Moline at 1231 5th Ave, Cisco's is the kind of sit-down Mexican bar &amp; grill the Quad Cities keeps coming back to. The kitchen turns out grilled tacos, hefty California-style burritos, and chicken-and-rice plates piled with melted cheese — while the bar pours the margaritas regulars can't stop talking about.": "En pleno centro de Moline, en 1231 5th Ave, Cisco's es ese bar & grill mexicano con servicio a la mesa al que los Quad Cities siempre regresan. La cocina saca tacos a la parrilla, burritos estilo California bien servidos y platos de pollo con arroz colmados de queso fundido — mientras la barra sirve las margaritas de las que los clientes no dejan de hablar.", "Facebook fans &amp; counting": "Seguidores en Facebook y contando", "DoorDash rating · 200+ reviews": "Calificación en DoorDash · 200+ reseñas", "Of guests recommend us": "De los clientes nos recomiendan", "Reservations welcome": "Aceptamos reservaciones", "Signature plates": "Platillos estrella", "The dishes Moline orders again and again — and the margaritas that earned the reviews.": "Los platillos que Moline pide una y otra vez — y las margaritas que se ganaron las reseñas.", "Three soft tacos filled with your choice of grilled steak or chicken, finished with fresh pico de gallo. Served with a full order of rice and beans.": "Tres tacos suaves con carne asada o pollo a la parrilla a elegir, terminados con pico de gallo fresco. Se sirven con una orden completa de arroz y frijoles.", "On the menu &rarr;": "En el menú →", "Grilled steak with chorizo wrapped around Mexican rice, beans, lettuce, and sour cream — then smothered in cheese dip and topped with pico de gallo.": "Carne asada con chorizo envuelta con arroz mexicano, frijoles, lechuga y crema — bañado en queso fundido y coronado con pico de gallo.", "Your choice of grilled or shredded chicken over rice, topped with melted cheese and served with warm tortillas. Comfort, the Cisco's way.": "Pollo a la parrilla o deshebrado a elegir, sobre arroz, cubierto de queso fundido y acompañado de tortillas calientes. Comida que reconforta, al estilo Cisco's.", "Ask your server": "Pregunta a tu mesero", "The menu": "Nuestro menú", "Real plates, real prices. A taste of what's coming out of the kitchen — full menu in the ordering app.": "Platos reales, precios reales. Una probada de lo que sale de la cocina — el menú completo está en la app de pedidos.", "Popular Plates": "Platos populares", "From the Bar": "De la barra", "3 soft tacos with steak or chicken &amp; pico de gallo. Served with rice and beans.": "3 tacos suaves con carne asada o pollo y pico de gallo. Se sirven con arroz y frijoles.", "Grilled steak &amp; chorizo, rice, beans, lettuce, sour cream — topped with cheese dip and pico de gallo.": "Carne asada y chorizo, arroz, frijoles, lechuga y crema — cubierto con queso fundido y pico de gallo.", "Grilled or shredded chicken topped with melted cheese, served with warm tortillas.": "Pollo a la parrilla o deshebrado cubierto de queso fundido, con tortillas calientes.", "Hungry for more? Appetizers, fajitas, combination plates and desserts are all on the full ordering menu.": "¿Se te antoja más? Entradas, fajitas, platos combinados y postres — todo está en el menú completo para ordenar.", "Market": "Varía", "On the rocks, frozen, or flavored — the drink reviewers call \"amazing.\"": "En las rocas, frozen o de sabores — la bebida que las reseñas llaman \"increíble\".", "Mexican beers, tequila, and cocktails to round out the table.": "Cervezas mexicanas, tequila y cocteles para completar la mesa.", "Bar pricing varies — ask your server for today's specials and the full margarita list.": "Los precios del bar varían — pregunta a tu mesero por los especiales del día y la lista completa de margaritas.", "View Full Menu &amp; Order": "Ver menú completo y ordenar", "Order on Uber Eats": "Ordena en Uber Eats", "Pull up a chair": "Acerca una silla", "A look at the plates, the bar, and the room.": "Un vistazo a los platos, la barra y el salón.", "A Real Full Bar": "Un bar completo de verdad", "House margaritas on the rocks or frozen, cerveza, tequila and cocktails — the reason regulars linger.": "Margaritas de la casa en las rocas o frozen, cerveza, tequila y cocteles — la razón por la que los clientes se quedan un rato más.", "Order Ahead, Pickup": "Ordena y recoge", "Tap once in our ordering app, grab the tacos hot at the counter — no waiting on a table.": "Un toque en nuestra app de pedidos y recoge tus tacos calientitos en el mostrador — sin esperar mesa.", "DoorDash to Your Door": "DoorDash hasta tu puerta", "Feast at home across the Quad Cities — rated about 4.5&#9733; over 200-plus delivery orders.": "Festeja en casa en todos los Quad Cities — calificación cercana a 4.5★ en más de 200 pedidos a domicilio.", "Tables &amp; Reservations": "Mesas y reservaciones", "Family-friendly and easygoing — call ahead for date night or a big group and we'll hold your seats.": "Familiar y relajado — llama antes para tu cita o para un grupo grande y te apartamos los lugares.", "Loved by the Quad Cities": "El consentido de los Quad Cities", "\"The food is great and the margaritas are amazing.\"": "\"La comida es excelente y las margaritas son increíbles.\"", "Google diner": "Comensal de Google", "· verified review": "· reseña verificada", "\"Rated around 4.5 stars across 200+ ratings — fast, reliable, and worth it.\"": "\"Alrededor de 4.5 estrellas en más de 200 calificaciones — rápido, confiable y vale la pena.\"", "DoorDash customers": "Clientes de DoorDash", "· 200+ ratings": "· 200+ calificaciones", "\"92% of guests recommend Cisco's — a downtown Moline favorite.\"": "\"El 92% de los clientes recomienda Cisco's — un favorito del centro de Moline.\"", "Facebook visitors": "Visitantes de Facebook", "· 4,250+ fans": "· 4,250+ seguidores", "Find us in downtown Moline": "Encuéntranos en el centro de Moline", "Address": "Dirección", "Phone": "Teléfono", "Hours": "Horario", "Sunday": "Domingo", "Monday": "Lunes", "Tuesday": "Martes", "Wednesday": "Miércoles", "Thursday": "Jueves", "Friday": "Viernes", "Saturday": "Sábado", "Get Directions": "Cómo llegar", "Call to Reserve": "Llama para reservar", "Mexican bar &amp; grill in downtown Moline. Grilled tacos, bold burritos &amp; amazing margaritas.": "Bar & grill mexicano en el centro de Moline. Tacos a la parrilla, burritos generosos y margaritas increíbles.", "Order": "Ordena", "Pickup &amp; Online": "Para recoger y en línea", "Call": "Llamar", "Map": "Mapa"};
+    var ATTR = {"Cisco's Mexican Bar and Grill — home": "Cisco's Mexican Bar and Grill — inicio", "Cisco's Mexican Bar &amp; Grill logo": "Logotipo de Cisco's Mexican Bar & Grill", "Call Cisco's": "Llama a Cisco's", "Open menu": "Abrir menú", "Primary": "Principal", "Mobile": "Móvil", "Scroll down": "Desplázate hacia abajo", "A generous Mexican plate from Cisco's kitchen": "Un plato mexicano generoso de la cocina de Cisco's", "Grilled tacos with steak or chicken and pico de gallo": "Tacos a la parrilla con carne asada o pollo y pico de gallo", "Burrito California with grilled steak, chorizo and cheese dip": "Burrito California con carne asada, chorizo y queso fundido", "Chicken and rice topped with melted cheese": "Pollo con arroz cubierto de queso fundido", "Margaritas on the rocks at the bar": "Margaritas en las rocas en la barra", "Menu sections": "Secciones del menú", "Grilled tacos plate": "Plato de tacos a la parrilla", "Generous Mexican plate": "Plato mexicano generoso", "California burrito": "Burrito California", "Margaritas at the bar": "Margaritas en la barra", "Warm cantina dining room": "Comedor cálido de la cantina", "Fresh guacamole": "Guacamole fresco", "Chips and salsa": "Totopos con salsa", "Friends dining together": "Amigos compartiendo la mesa", "What we offer": "Lo que ofrecemos", "5 out of 5 stars": "5 de 5 estrellas", "4.5 out of 5 stars": "4.5 de 5 estrellas", "Highly recommended": "Muy recomendado", "Map to Cisco's Mexican Bar &amp; Grill": "Mapa a Cisco's Mexican Bar & Grill", "Instagram location": "Ubicación en Instagram", "Quick actions": "Acciones rápidas"};
+    var HTML = {"0": "Un lugar familiar y relajado: tomamos reservaciones, encendemos la parrilla para el comedor y mantenemos a todo ritmo los pedidos para recoger y DoorDash, para esas noches en que prefieres festejar en casa. Acerca una silla — <em>mi casa es su casa.</em>", "1": "<em>\"La comida es excelente y las margaritas son increíbles.\"</em> Nuestro bar completo es la razón por la que los clientes se quedan un rato más — clásica en las rocas, frozen o de sabores, servida como debe ser en una cantina.", "2": "Dom: 11am – 6pm<br />Lun–Jue: 11am – 9pm<br />Vie–Sáb: 11am – 10pm"};
+    var KEY = "ciscos_lang";
+    function dec(s){ try{ var e=document.createElement('textarea'); e.innerHTML=s; return e.value; }catch(_){ return String(s); } }
+    function norm(s){ return dec(String(s)).replace(/\s+/g,' ').trim(); }
+    var T={}, A={};
+    for(var k in TEXT){ if(TEXT.hasOwnProperty(k)){ var kk=norm(k); if(kk) T[kk]=TEXT[k]; } }
+    for(var k2 in ATTR){ if(ATTR.hasOwnProperty(k2)){ var na=norm(k2); if(na) A[na]=ATTR[k2]; } }
+    var lang='en';
+    try{
+      var up=new URLSearchParams(location.search).get('lang');
+      if(up==='es'||up==='en'){ lang=up; localStorage.setItem(KEY,up); }
+      else if(localStorage.getItem(KEY)==='es'){ lang='es'; }
+    }catch(_){ try{ if(localStorage.getItem(KEY)==='es') lang='es'; }catch(e){} }
+    var SKIP={SCRIPT:1,STYLE:1,NOSCRIPT:1,TEXTAREA:1,CODE:1};
+    var tnodes=[], anodes=[], hnodes=[];
+    var seen=(window.WeakSet)?new WeakSet():null;
+    var seenH=(window.WeakSet)?new WeakSet():null;
+    function nkey(v){ return v.replace(/\s+/g,' ').trim(); }
+    function scan(root){
+      if(!root||root.nodeType!==1) return;
+      var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false), n;
+      while(n=w.nextNode()){
+        var v=n.nodeValue; if(!v) continue; var key=nkey(v); if(!key) continue;
+        var p=n.parentNode; if(!p||SKIP[p.nodeName]) continue;
+        if(!T.hasOwnProperty(key)) continue;
+        if(seen){ if(seen.has(n)) continue; seen.add(n); }
+        tnodes.push({node:n,en:v,key:key});
+      }
+      var names=['placeholder','aria-label','title','alt'];
+      var els=root.querySelectorAll('[placeholder],[aria-label],[title],[alt]');
+      for(var i=0;i<els.length;i++){ var el=els[i];
+        for(var a=0;a<names.length;a++){ var nm=names[a]; if(!el.hasAttribute(nm)) continue;
+          var val=el.getAttribute(nm); var vk=val?nkey(val):''; if(!vk||!A.hasOwnProperty(vk)) continue;
+          anodes.push({el:el,attr:nm,en:val,key:vk});
+        }
+      }
+      var hs=root.querySelectorAll('[data-i18n]');
+      for(var h=0;h<hs.length;h++){ var he=hs[h];
+        if(seenH){ if(seenH.has(he)) continue; seenH.add(he); }
+        var id=he.getAttribute('data-i18n');
+        if(HTML.hasOwnProperty(id)) hnodes.push({el:he,en:he.innerHTML,k:id});
+      }
+    }
+    function repl(orig,es){ var m=orig.match(/^(\s*)([\s\S]*?)(\s*)$/); return m[1]+es+m[3]; }
+    function apply(){
+      for(var i=0;i<tnodes.length;i++){ var o=tnodes[i];
+        o.node.nodeValue=(lang==='es'&&T[o.key]!=null)?repl(o.en,T[o.key]):o.en; }
+      for(var j=0;j<anodes.length;j++){ var e=anodes[j];
+        e.el.setAttribute(e.attr,(lang==='es'&&A[e.key]!=null)?A[e.key]:e.en); }
+      for(var g=0;g<hnodes.length;g++){ var hn=hnodes[g];
+        var want=(lang==='es'&&HTML[hn.k]!=null)?HTML[hn.k]:hn.en;
+        if(hn.el.innerHTML!==want) hn.el.innerHTML=want; }
+      try{ document.documentElement.setAttribute('lang',lang); }catch(_){}
+      var b=document.getElementById('langToggle');
+      if(b){ var ss=b.querySelectorAll('[data-l]'); for(var q=0;q<ss.length;q++){ ss[q].classList.toggle('on',ss[q].getAttribute('data-l')===lang); } }
+    }
+    function setLang(l){ lang=(l==='es')?'es':'en'; try{localStorage.setItem(KEY,lang);}catch(_){}; apply(); }
+    function init(){
+      scan(document.body); apply();
+      var btn=document.getElementById('langToggle');
+      if(btn){ btn.addEventListener('click',function(ev){
+        var el=ev.target; while(el&&el!==btn&&!(el.getAttribute&&el.getAttribute('data-l'))) el=el.parentNode;
+        var l=(el&&el.getAttribute)?el.getAttribute('data-l'):null;
+        setLang(l?l:(lang==='es'?'en':'es'));
+      }); }
+      if(window.MutationObserver){
+        var pending=false;
+        var mo=new MutationObserver(function(){ if(pending) return; pending=true;
+          setTimeout(function(){ pending=false; var b0=tnodes.length+anodes.length+hnodes.length; scan(document.body); if(tnodes.length+anodes.length+hnodes.length!==b0) apply(); },160); });
+        mo.observe(document.body,{childList:true,subtree:true});
+      } else { setTimeout(function(){ scan(document.body); apply(); },1200); setTimeout(function(){ scan(document.body); apply(); },3000); }
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+  })();
+
+  </script>
 </body>
 </html>

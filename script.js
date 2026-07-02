@@ -14,39 +14,63 @@
   var yearEl = $("#year");
   if (yearEl) yearEl.textContent = "2026";
 
-  /* ---------- highlight today's hours ---------- */
+  /* ---------- Highlight today's row ONLY when actually open now ---------- */
   (function () {
     var rows = $$(".hours tbody tr");
     if (!rows.length) return;
-    var today = new Date().getDay(); // 0 = Sun
-    if (rows[today]) rows[today].classList.add("is-today");
+    // open/close in minutes from midnight; close > 1440 = runs past midnight into next day
+    var HRS = {
+      0: { o: 660, c: 1080 }, // Sun 11:00am – 6:00pm
+      1: { o: 660, c: 1260 }, // Mon 11:00am – 9:00pm
+      2: { o: 660, c: 1260 }, // Tue 11:00am – 9:00pm
+      3: { o: 660, c: 1260 }, // Wed 11:00am – 9:00pm
+      4: { o: 660, c: 1260 }, // Thu 11:00am – 9:00pm
+      5: { o: 660, c: 1320 }, // Fri 11:00am – 10:00pm
+      6: { o: 660, c: 1320 }  // Sat 11:00am – 10:00pm
+    };
+    var d = new Date();
+    var day = d.getDay();                      // 0 Sun .. 6 Sat
+    var now = d.getHours() * 60 + d.getMinutes();
+    var open = false;
+    var rowIndex = day;                        // table order: Sun..Sat
+    var t = HRS[day];
+    if (t && now >= t.o && now < Math.min(t.c, 1440)) open = true;  // today's shift, up to midnight
+    var yDay = (day + 6) % 7;
+    var yt = HRS[yDay];                                             // yesterday's late shift
+    if (!open && yt && yt.c > 1440 && now < (yt.c - 1440)) { open = true; rowIndex = yDay; }
+    if (!open) return;                         // closed → no highlight, no "Open now"
+    if (rows[rowIndex]) rows[rowIndex].classList.add("is-now");
   })();
 
   /* ---------- nav: solidify on scroll ---------- */
   var nav = $("#nav");
-  var onScroll = function () {
-    if (window.scrollY > 60) nav.classList.add("is-scrolled");
-    else nav.classList.remove("is-scrolled");
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  if (nav) {
+    var onScroll = function () {
+      if (window.scrollY > 60) nav.classList.add("is-scrolled");
+      else nav.classList.remove("is-scrolled");
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
 
   /* ---------- mobile overlay ---------- */
   var burger = $("#burger");
   var overlay = $("#overlay");
-  var toggleMenu = function (open) {
-    var isOpen = open != null ? open : !overlay.classList.contains("is-open");
-    overlay.classList.toggle("is-open", isOpen);
-    burger.classList.toggle("is-open", isOpen);
-    burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    overlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
-    document.body.style.overflow = isOpen ? "hidden" : "";
-  };
-  if (burger) burger.addEventListener("click", function () { toggleMenu(); });
-  $$("#overlay a").forEach(function (a) { a.addEventListener("click", function () { toggleMenu(false); }); });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && overlay.classList.contains("is-open")) toggleMenu(false);
-  });
+  if (burger && overlay) {
+    var toggleMenu = function (open) {
+      var isOpen = open != null ? open : !overlay.classList.contains("is-open");
+      overlay.classList.toggle("is-open", isOpen);
+      burger.classList.toggle("is-open", isOpen);
+      burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      overlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    };
+    burger.addEventListener("click", function () { toggleMenu(); });
+    $$("#overlay a").forEach(function (a) { a.addEventListener("click", function () { toggleMenu(false); }); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("is-open")) toggleMenu(false);
+    });
+  }
 
   /* ---------- menu tabs ---------- */
   (function () {
@@ -66,15 +90,16 @@
           if (match) { p.hidden = false; } else { p.hidden = true; }
         });
         // re-trigger reveal on freshly shown items
-        $$("[data-reveal]", panels.filter(function(p){return !p.hidden;})[0]).forEach(function (el) {
-          el.classList.add("is-visible");
-        });
+        var visible = panels.filter(function (p) { return !p.hidden; })[0];
+        if (visible) {
+          $$("[data-reveal]", visible).forEach(function (el) { el.classList.add("is-visible"); });
+        }
       });
     });
   })();
 
   /* ---------- Swiper: gallery ---------- */
-  if (window.Swiper) {
+  if (window.Swiper && $(".gallery__swiper")) {
     new Swiper(".gallery__swiper", {
       slidesPerView: 1.15,
       spaceBetween: 18,
@@ -90,8 +115,10 @@
         1200: { slidesPerView: 3.4, spaceBetween: 30 }
       }
     });
+  }
 
-    /* ---------- Swiper: reviews ---------- */
+  /* ---------- Swiper: reviews ---------- */
+  if (window.Swiper && $(".reviews__swiper")) {
     new Swiper(".reviews__swiper", {
       slidesPerView: 1,
       speed: 700,
@@ -179,7 +206,7 @@
           gsap.to(obj, {
             v: target, duration: 1.8, ease: "power2.out",
             onUpdate: function () {
-              el.textContent = obj.v.toFixed(decimals) + suffix;
+              el.textContent = (decimals ? obj.v.toFixed(decimals) : Math.round(obj.v).toLocaleString("en-US")) + suffix;
             }
           });
         }

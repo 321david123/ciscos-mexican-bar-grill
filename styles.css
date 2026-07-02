@@ -181,6 +181,9 @@ section { position: relative; }
 .nav.is-scrolled .nav__logo { width: 42px; height: 42px; }
 .nav.is-scrolled .nav__brand-name { font-size: 1.2rem; }
 
+/* EN/ES toggle inherits currentColor; this nav always sits on dark, so force light */
+.nav .lang-toggle { color: rgba(255,255,255,.88); }
+
 /* burger */
 .nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; z-index: 1100; }
 .nav__burger span { width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: transform .4s var(--ease), opacity .3s; }
@@ -452,9 +455,10 @@ section { position: relative; }
 .hours th, .hours td { text-align: left; padding: .58rem 0; font-size: .96rem; border-bottom: 1px solid var(--line-soft); }
 .hours th { font-weight: 400; color: var(--text-soft); font-family: var(--ff-head); letter-spacing: .02em; }
 .hours td { text-align: right; color: var(--charcoal); font-variant-numeric: tabular-nums; }
-.hours tr.is-today th { color: var(--red); font-weight: 600; }
-.hours tr.is-today td { color: var(--red); font-weight: 600; }
-.hours tr.is-today td::after { content: " · Today"; color: var(--red); font-size: .78em; letter-spacing: .04em; }
+/* row highlighted by script.js only while the restaurant is actually open */
+.hours tr.is-now th { color: var(--red); font-weight: 600; }
+.hours tr.is-now td { color: var(--red); font-weight: 600; }
+.hours tr.is-now td::after { content: " · Open now"; color: var(--red); font-size: .78em; letter-spacing: .04em; }
 
 .visit__cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.6rem; }
 .visit__map { border-radius: var(--r); overflow: hidden; min-height: 440px; box-shadow: 0 28px 54px -30px rgba(0,0,0,.4); border: 1px solid var(--line-gold); }
